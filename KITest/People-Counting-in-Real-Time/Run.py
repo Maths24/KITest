@@ -98,9 +98,9 @@ def run():
         # VideoCapture or VideoStream
         
       
-
+        vs = cv2.VideoCapture(0)
         
-        frame = image
+        (grabbed, frame) = vs.read()
         frame = frame[1] if args.get("input", False) else frame
 
         # if we are viewing a video and we did not grab a frame then we
