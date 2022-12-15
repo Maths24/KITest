@@ -54,7 +54,7 @@ def run():
     if not args.get("input", False):
         print("[INFO] Starting the live stream..")
         # vs = VideoStream(config.url).start()
-        vs = cv2.VideoCapture(0)
+        #vs = cv2.VideoCapture(0)
         time.sleep(2.0)
 
     # otherwise, grab a reference to the video file
@@ -91,14 +91,14 @@ def run():
 
     if config.Thread:
         vs = thread.ThreadingClass(config.url)
-
+    vs = cv2.VideoCapture(0)
     # loop over frames from the video stream
     while True:
         # grab the next frame and handle if we are reading from either
         # VideoCapture or VideoStream
         
       
-        vs = cv2.VideoCapture(0)
+        
         
         (grabbed, frame) = vs.read()
         frame = frame[1] if args.get("input", False) else frame
