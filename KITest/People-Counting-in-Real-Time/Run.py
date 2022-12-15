@@ -15,6 +15,8 @@ import dlib
 import cv2
 import datetime
 from itertools import zip_longest
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 t0 = time.time()
 
@@ -95,7 +97,22 @@ def run():
     while True:
         # grab the next frame and handle if we are reading from either
         # VideoCapture or VideoStream
-        frame = vs.read()
+        
+        camera = PiCamera()
+        rawCapture = PiRGBArray(camera)
+
+        time.sleep(0.1)
+
+        camera.capture(rawCapture, format="bgr")
+        image = rawCapture.array
+
+        cv2.imshow("Image", image)
+        cv2.waitKey(0)
+
+        print("finished")
+
+        
+        frame = image
         frame = frame[1] if args.get("input", False) else frame
 
         # if we are viewing a video and we did not grab a frame then we
@@ -106,7 +123,7 @@ def run():
         # resize the frame to have a maximum width of 500 pixels (the
         # less data we have, the faster we can process it), then convert
         # the frame from BGR to RGB for dlib
-       # frame = imutils.resize(frame, width=500)
+        frame = imutils.resize(frame, width=500)
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         # if the frame dimensions are empty, set them
