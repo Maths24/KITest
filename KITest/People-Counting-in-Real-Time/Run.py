@@ -111,7 +111,7 @@ def run():
 
         print("finished")
 
-        
+       """"
         frame = image
         frame = frame[1] if args.get("input", False) else frame
 
@@ -343,7 +343,7 @@ def run():
             num_seconds = (t1-t0)
             if num_seconds > 28800:
                 break
-
+"""
     # stop the timer and display FPS information
     fps.stop()
     print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
