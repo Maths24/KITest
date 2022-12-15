@@ -47,7 +47,7 @@ def run():
 
     # load our serialized model from disk
     net = cv2.dnn.readNetFromCaffe(
-        "KI/mobilenet_ssd/MobileNetSSD_deploy.prototxt", "KI/mobilenet_ssd/MobileNetSSD_deploy.caffemodel")
+        "mobilenet_ssd/MobileNetSSD_deploy.prototxt", "mobilenet_ssd/MobileNetSSD_deploy.caffemodel")
 
     # if a video path was not supplied, grab a reference to the ip camera
     if not args.get("input", False):
