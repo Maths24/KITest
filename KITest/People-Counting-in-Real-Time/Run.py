@@ -25,7 +25,7 @@ def run():
     ap = argparse.ArgumentParser()
     ap.add_argument("-p", "--prototxt", required=False,
                     help="path to Caffe 'deploy' prototxt file")
-    ap.add_argument("-m", "--model", required=False,
+    ap.add_argument("-m", "--model", required=True,
                     help="path to Caffe pre-trained model")
     ap.add_argument("-i", "--input", type=str,
                     help="path to optional input video file")
@@ -46,8 +46,8 @@ def run():
                "sofa", "train", "tvmonitor"]
 
     # load our serialized model from disk
-    net = cv2.dnn.readNetFromCaffe(
-        "mobilenet_ssd/MobileNetSSD_deploy.prototxt", "mobilenet_ssd/MobileNetSSD_deploy.caffemodel")
+   	net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
+
 
     # if a video path was not supplied, grab a reference to the ip camera
     if not args.get("input", False):
