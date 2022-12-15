@@ -46,7 +46,7 @@ def run():
                "sofa", "train", "tvmonitor"]
 
     # load our serialized model from disk
-   	net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
+    net = cv2.dnn.readNetFromCaffe(args["prototxt"], args["model"])
 
 
     # if a video path was not supplied, grab a reference to the ip camera
