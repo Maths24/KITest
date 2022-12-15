@@ -15,8 +15,7 @@ import dlib
 import cv2
 import datetime
 from itertools import zip_longest
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+
 
 t0 = time.time()
 
@@ -98,20 +97,9 @@ def run():
         # grab the next frame and handle if we are reading from either
         # VideoCapture or VideoStream
         
-        camera = PiCamera()
-        rawCapture = PiRGBArray(camera)
+      
 
-        time.sleep(0.1)
-
-        camera.capture(rawCapture, format="bgr")
-        image = rawCapture.array
-
-        cv2.imshow("Image", image)
-        cv2.waitKey(0)
-
-        print("finished")
-
-        """
+        
         frame = image
         frame = frame[1] if args.get("input", False) else frame
 
@@ -343,7 +331,7 @@ def run():
             num_seconds = (t1-t0)
             if num_seconds > 28800:
                 break
-        """
+        
     # stop the timer and display FPS information
     fps.stop()
     print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
